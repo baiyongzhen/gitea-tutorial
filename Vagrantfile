@@ -12,9 +12,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.synced_folder ".", "/vagrant"
   end
 
-  config.vm.define :backstage do |host|
+  config.vm.define :gitea do |host|
     host.vm.box = "bento/ubuntu-20.04"
-    host.vm.hostname = "backstage"
+    host.vm.hostname = "gitea"
     host.vm.network :private_network, ip: "192.168.56.173"
     host.vm.provision :shell, path: "scripts/debian_bootstrap.sh"
     # boot timeout
