@@ -1,0 +1,41 @@
+#
+# .gitea/gitea-ci.yaml
+#
+
+name: Build And Test
+run-name: ${{ gitea.actor }} is runs ci pipeline
+on: [ push ]
+
+jobs:
+  Gitea-Docker-Build-Push:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+#      - name: Docker meta
+#        id: meta
+#        uses: docker/metadata-action@v5
+#        with:
+#          images: gnu96/${{ gitea.repository }}
+#      - name: Build and push
+#        uses: docker/build-push-action@v5
+#        with:
+#          context: .
+#          file: ./Dockerfile
+#          platforms: linux/amd64          
+#          push: true
+#          tags: ${{ steps.meta.outputs.tags }}
+#          labels: ${{ steps.meta.outputs.labels }}
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64          
+          push: true
+          tags: gnu96/${{ gitea.repository }}:latest      
