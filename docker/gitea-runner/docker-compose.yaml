@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  act_runner:
+    image: gitea/act_runner:0.2.10
+    container_name: act_runner
+    privileged: true
+    environment:
+      CONFIG_FILE: /config.yaml
+      GITEA_INSTANCE_URL: "https://192.168.56.173:3300" 
+      GITEA_RUNNER_REGISTRATION_TOKEN: luUSGmotQihRRm9c065WiqOg1bEumlDoKZRaNIu2
+      GITEA_RUNNER_NAME: "act_runner"
+      #GITEA_RUNNER_LABELS: ubuntu-latest:docker
+    volumes:
+      - ~/act-runner/data:/data
+      - ~/act-runner/cache:/root/.cache    
+      - ./config.yaml:/config.yaml
+      - /var/run/docker.sock:/var/run/docker.sock

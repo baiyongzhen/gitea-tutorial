@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  gitea:
+    image: gitea/gitea:1.21.10
+    container_name: gitea
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+    volumes:
+      - "~/gitea/data:/data"
+      - "./app.ini:/data/gitea/conf/app.ini"
+      - "./certs:/data/certs"
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    ports:
+      - "3300:3300"
+      - "222:22"
+
