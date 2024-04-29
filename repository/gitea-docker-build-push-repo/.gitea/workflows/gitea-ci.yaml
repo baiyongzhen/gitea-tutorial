@@ -38,4 +38,4 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64          
           push: true
-          tags: gnu96/${{ gitea.repository }}:latest      
+          tags: gnu96/gitea-docker-build-push-repo:latest   
