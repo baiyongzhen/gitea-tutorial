@@ -1,0 +1,4 @@
+image:
+  repository: gnu96/gitea-docker-build-push-repo
+  pullPolicy: IfNotPresent
+  tag: 17

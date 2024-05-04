@@ -77,3 +77,4 @@ build-harness
 .vscode
 .direnv
 
+**/temp
